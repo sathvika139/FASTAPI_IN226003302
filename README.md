@@ -172,3 +172,126 @@ Endpoint:
 ```
 POST /orders/bulk
 ```
+
+# FastAPI Assignment 3
+## Assignment Description
+
+This assignment focuses on building a simple **Product Management API** using FastAPI.
+The goal is to practice REST API development, request validation, and response handling using Python and FastAPI.
+
+The API manages a list of products stored in memory and allows users to perform common CRUD operations.
+
+### Objectives
+
+* Understand how to build APIs using FastAPI
+* Implement RESTful endpoints
+* Use Pydantic models for request validation
+* Handle HTTP responses and status codes
+* Perform CRUD operations on in-memory data
+
+### Features Implemented
+
+1. **Retrieve all products**
+
+   * Endpoint returns a list of all available products along with the total count.
+
+2. **Retrieve a product by ID**
+
+   * Fetch a single product using its unique identifier.
+   * Returns a `404` error if the product does not exist.
+
+3. **Add a new product**
+
+   * Accepts product details through a request body.
+   * Prevents duplicate product names.
+
+4. **Update product details**
+
+   * Allows updating the price and stock availability of a product.
+
+5. **Delete a product**
+
+   * Removes a product from the product list using its ID.
+
+6. **Product audit endpoint**
+
+   * Provides analytics such as:
+
+     * Total products
+     * Number of products in stock
+     * Out-of-stock product names
+     * Total inventory value
+     * Most expensive product
+
+7. **Bulk discount feature (Bonus)**
+
+   * Applies a percentage discount to all products belonging to a specified category.
+
+### Testing
+
+All endpoints were tested using the **FastAPI Swagger UI** interface.
+Screenshots of API responses are included as part of the assignment submission.
+
+Swagger API documentation:
+
+```
+http://127.0.0.1:8000/docs
+```
+
+## Implemented APIs
+
+### 1. Get All Products
+
+```
+GET /products
+```
+
+Returns all available products.
+
+### 2. Get Product by ID
+
+```
+GET /products/{product_id}
+```
+
+Fetch a single product using its ID.
+
+### 3. Add Product
+
+```
+POST /products
+```
+
+Adds a new product to the list.
+
+### 4. Update Product
+
+```
+PUT /products/{product_id}
+```
+
+Updates product price or stock status.
+
+### 5. Delete Product
+
+```
+DELETE /products/{product_id}
+```
+
+Removes a product from the list.
+
+### 6. Product Audit
+
+```
+GET /products/audit
+```
+
+Provides product statistics including stock information and total value.
+
+### 7. Bulk Discount (Bonus)
+
+```
+PUT /products/discount
+```
+
+Applies a percentage discount to all products in a given category.

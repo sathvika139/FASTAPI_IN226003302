@@ -293,5 +293,104 @@ Provides product statistics including stock information and total value.
 ```
 PUT /products/discount
 ```
-
 Applies a percentage discount to all products in a given category.
+
+# FastAPI – Assignment 4
+## Cart System API
+
+This project implements a Shopping Cart System using FastAPI.
+It demonstrates how multiple API endpoints work together to simulate a real e-commerce cart workflow.
+
+**The API allows users to:**
+
+1. Add items to a cart
+2. View cart contents
+3. Handle invalid or out-of-stock products
+4. Update quantities
+5. Remove items
+6. Checkout orders
+7. View order history
+
+### API Endpoints
+1. Method	Endpoint	Description
+2. POST	/cart/add	Add item to cart
+3. GET	/cart	View cart items
+4. DELETE	/cart/{product_id}	Remove item from cart
+5. POST	/cart/checkout	Checkout cart
+6. GET	/orders	View placed orders
+
+### Q1 – Add Items to Cart
+
+Add:
+
+```Wireless Mouse (quantity 2)```
+
+Notebook (quantity 1)
+
+Verify correct subtotal.
+
+### Q2 – View Cart
+
+Use:
+```
+GET /cart
+```
+Verify:
+
+item_count = 2
+
+grand_total = 1097
+
+### Q3 – Error Handling
+
+Test:
+
+```Out-of-stock product (USB Hub)```
+
+Non-existent product ID
+
+Expected responses:
+
+400 Bad Request
+
+404 Not Found
+
+### Q4 – Update Existing Item Quantity
+
+Add Wireless Mouse again.
+
+Expected behavior:
+
+Quantity increases
+
+Message changes to
+ ```"Cart updated"  ``` 
+
+**Q5 – Remove Item and Checkout**
+
+Steps:
+1. Remove Notebook from cart
+2.  Verify cart contents
+3.  Checkout with customer details
+4.  Verify cart becomes empty
+5.  Confirm order appears in ```/orders``` 
+
+**Q6 – Full Cart Flow**
+
+Simulate two customers:
+
+Customer 1:
+ 1. Adds items
+ 2. Checks out
+
+**Final result:** 
+```GET /orders → total_orders = 3```
+
+**Bonus Task**
+
+Attempt checkout with an empty cart.
+
+Expected result:
+
+400 Bad Request
+```Cart is empty — add items first```
